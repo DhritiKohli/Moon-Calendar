@@ -9,26 +9,35 @@ const daysInMonth = new Date(year, month + 1, 0).getDate();
 
 const fetchPromises = [];
 
-// Step 1: Collect all fetch promises for each day of the month
-for (let day = 1; day <= daysInMonth; day++) {
+ for (let day = 1; day <= daysInMonth; day++) {
   const date = new Date(year, month, day);
   const dateString = date.toISOString().split("T")[0];
 
-  const fetchPromise = fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&date=${dateString}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log("Fetched for", dateString, data); // For debugging
-      return {
-        date: dateString,
-        phase: data.moon_phase,
-        illumination: data.moon_illumination_percentage || null
-      };
-    });
+  const cached = localStorage.getItem(`moon_${dateString}`);
 
-  fetchPromises.push(fetchPromise);
+  if (cached) {
+    const data = JSON.parse(cached);
+    fetchPromises.push(Promise.resolve({
+      date: dateString,
+      phase: data.moon_phase,
+      illumination: data.moon_illumination_percentage || null
+    }));
+  } else {
+    const fetchPromise = fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&date=${dateString}`)
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem(`moon_${dateString}`, JSON.stringify(data));
+        return {
+          date: dateString,
+          phase: data.moon_phase,
+          illumination: data.moon_illumination_percentage || null
+        };
+      });
+
+    fetchPromises.push(fetchPromise);
+  }
 }
-
-// Step 2: Wait for all API responses and display them
+// 👉 Once all data is ready, sort and display
 Promise.all(fetchPromises)
   .then(results => {
     results.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -40,7 +49,7 @@ Promise.all(fetchPromises)
       const formattedPhase = formatPhase(entry.phase);
       const illuminationText = entry.illumination
         ? `${entry.illumination}% illuminated`
-        : `🌙 Illumination not available`;
+        : `Illumination not available`;
 
       dayDiv.innerHTML = `
         <strong>${entry.date}</strong><br>
@@ -52,11 +61,11 @@ Promise.all(fetchPromises)
     });
   })
   .catch(error => {
-    console.error("Failed to fetch moon data:", error);
+    console.error("Error loading moon data:", error);
     calendarDiv.innerHTML = `<p>Error loading moon phase data.</p>`;
   });
 
-// Helper function to make "WAXING_CRESCENT" → "Waxing Crescent"
+// 👉 Helper to format phase names
 function formatPhase(phase) {
   return phase
     .toLowerCase()
