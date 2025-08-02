@@ -1,7 +1,7 @@
 body {
+  background-image: url('background.jpg'); 
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #111;
   color: #fff;
   text-align: center;
 }
