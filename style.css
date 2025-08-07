@@ -40,3 +40,14 @@ background-image: url('next.png')
   flex-wrap: wrap;
   justify-content: center;
 }
+
+#calendar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#calendar {
+  margin: 0 20px;
+}
