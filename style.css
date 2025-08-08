@@ -1,5 +1,5 @@
 body {
-  background-image: url('background.jpg'); 
+  background-image: url('img/background.jpg'); 
   font-family: Arial, sans-serif;
   padding: 20px;
   color: #000000;
@@ -7,11 +7,11 @@ body {
 }
 
 #before{
-background-image: url('before.png')
+background-image: url('buttons/before.png')
 }
 
 #next{
-background-image: url('next.png')
+background-image: url('buttons/next.png')
 }
 #before,
 #next {

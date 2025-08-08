@@ -1,2 +1,2 @@
 # Moon-Calendar
-Calendar that shows the illumination and phase moon is during the selected day. 
+This calendar is for the moon lovers out there. This calendar tells you what phase of the moon is going on and its illumination on the specified date. It is programmed using vanilla HTML, JS and CSS along with using the API fromo ipgeolocation. The backgroud was created with the help of Canva. 

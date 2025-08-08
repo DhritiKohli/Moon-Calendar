@@ -7,13 +7,13 @@ let currentDate = new Date();
 
 const phaseImages = {
   "New Moon": "newMoon.png",
-  "Waxing Crescent": "waxingCrescent.png",
-  "First Quarter": "firstQuarter.png",
-  "Waxing Gibbous" :"waxingGibbous.png",
-  "Full Moon" : "fullMoon.jpg",
-  "Waning Gibbous": "waningGibbous.png",
-  "Last Quarter" : "lastQuarter.png",
-  "Waning Crescent": "waningCrescent.png"
+  "Waxing Crescent": "img/waxingCrescent.png",
+  "First Quarter": "img/firstQuarter.png",
+  "Waxing Gibbous" :"img/waxingGibbous.png",
+  "Full Moon" : "img/fullMoon.jpg",
+  "Waning Gibbous": "img/waningGibbous.png",
+  "Last Quarter" : "img/lastQuarter.png",
+  "Waning Crescent": "img/waningCrescent.png"
 };
 
 function showDay(date) {
