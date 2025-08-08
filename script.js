@@ -5,6 +5,17 @@ const nextBtn = document.getElementById("next");
 
 let currentDate = new Date();
 
+const phaseImages = {
+  "New Moon": "newMoon.png",
+  "Waxing Crescent": "waxingCrescent.png",
+  "First Quarter": "firstQuarter.png",
+  "Waxing Gibbous" :"waxingGibbous.png",
+  "Full Moon" : "fullMoon.jpg",
+  "Waning Gibbous": "waningGibbous.png",
+  "Last Quarter" : "lastQuarter.png",
+  "Waning Crescent": "waningCrescent.png"
+};
+
 function showDay(date) {
   const dateString = date.toISOString().split("T")[0];
   calendarDiv.innerHTML = "<p>Loading...</p>";
@@ -31,10 +42,12 @@ function renderDay(dateString, phase, illumination) {
   const illuminationText = illumination
     ? `${illumination}% illuminated`
     : `Illumination not available`;
-
+// Disply the moon phase image if available
+const imgSrc = phaseImages[formattedPhase]
   calendarDiv.innerHTML = `
     <div class="day">
       <strong>${dateString}</strong><br>
+      <img src="${imgSrc}" alt="${formattedPhase}" style="width:100px;height:100px;"><br>
       ${formattedPhase}<br>
       🌙 ${illuminationText}
     </div>
