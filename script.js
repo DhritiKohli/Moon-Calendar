@@ -6,14 +6,14 @@ const nextBtn = document.getElementById("next");
 let currentDate = new Date();
 
 const phaseImages = {
-  "New Moon": "newMoon.png",
-  "Waxing Crescent": "img/waxingCrescent.png",
-  "First Quarter": "img/firstQuarter.png",
-  "Waxing Gibbous" :"img/waxingGibbous.png",
-  "Full Moon" : "img/fullMoon.jpg",
-  "Waning Gibbous": "img/waningGibbous.png",
-  "Last Quarter" : "img/lastQuarter.png",
-  "Waning Crescent": "img/waningCrescent.png"
+ "New Moon": "img/newMoon.png",
+"Waxing Crescent": "img/waxingCrescent.png",
+"First Quarter": "img/firstQuarter.png",
+"Waxing Gibbous": "img/waxingGibbous.png",
+"Full Moon": "img/fullMoon.png",
+"Waning Gibbous": "img/waningGibbous.png",
+"Last Quarter": "img/lastQuarter.png",
+"Waning Crescent": "img/waningCrescent.png"
 };
 
 function showDay(date) {
@@ -47,7 +47,7 @@ const imgSrc = phaseImages[formattedPhase]
   calendarDiv.innerHTML = `
     <div class="day">
       <strong>${dateString}</strong><br>
-      <img src="${imgSrc}" alt="${formattedPhase}" style="width:100px;height:100px;"><br>
+      <img src="${imgSrc}" alt="${formattedPhase}" style="width:300px;height:300px;"><br>
       ${formattedPhase}<br>
       🌙 ${illuminationText}
     </div>
