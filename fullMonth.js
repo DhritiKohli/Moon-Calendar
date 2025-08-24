@@ -7,6 +7,18 @@ const month = today.getMonth();
 
 const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+const menuButton = document.getElementById("menu-Button");
+const popupMenu = document.getElementById("popup-Menu");
+const closeMenu = document.getElementById("close-Menu");
+
+menuButton.onclick = () => {
+  popupMenu.style.display = "flex";
+};
+
+closeMenu.onclick = () => {
+  popupMenu.style.display = "none";
+};
+
 const fetchPromises = [];
 
  for (let day = 1; day <= daysInMonth; day++) {

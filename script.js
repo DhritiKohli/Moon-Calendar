@@ -2,6 +2,17 @@ const apiKey = "7ea1ccbf295b426daa079e79149ad7da";
 const calendarDiv = document.getElementById("calendar");
 const beforeBtn = document.getElementById("before");
 const nextBtn = document.getElementById("next");
+const menuButton = document.getElementById("menu-Button");
+const popupMenu = document.getElementById("popup-Menu");
+const closeMenu = document.getElementById("close-Menu");
+
+menuButton.onclick = () => {
+  popupMenu.style.display = "flex";
+};
+
+closeMenu.onclick = () => {
+  popupMenu.style.display = "none";
+};
 
 let currentDate = new Date();
 
