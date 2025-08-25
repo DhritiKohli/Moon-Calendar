@@ -6,13 +6,6 @@ const menuButton = document.getElementById("menu-Button");
 const popupMenu = document.getElementById("popup-Menu");
 const closeMenu = document.getElementById("close-Menu");
 
-menuButton.onclick = () => {
-  popupMenu.style.display = "flex";
-};
-
-closeMenu.onclick = () => {
-  popupMenu.style.display = "none";
-};
 
 let currentDate = new Date();
 
